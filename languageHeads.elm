@@ -108,19 +108,22 @@ stepState space state = if space then Play else state
 display ({state, heads, player} as game) =   
   let (w, h) = (800, 600)
   in collage w h
-       ([ drawRoad w h
+       ([ drawSky w h
+       , drawRoad w h
        , drawBuilding w h
        , drawPaddle w h player.x
        , drawScore w h player
        , drawMessage w h state] ++ 
        (drawHeads w h heads))
-
+drawSky w h = 
+  toForm (image 800 600 "/img/sky.jpg")
+  
 drawRoad w h =   
-  filled gray (rect (toFloat w) 100) |> 
+  toForm (image 800 100 "/img/street.png") |> 
   moveY (-(half h) + 50)
   
 drawBuilding w h =
-  filled red (rect 100 (toFloat h)) |> 
+  toForm (image 100 600 "/img/wall.jpg") |> 
   moveX (-(half w) + 50)
 
 drawHeads w h heads = map (drawHead w h) heads   
@@ -134,9 +137,9 @@ drawHead w h head =
      rotate (degrees (x * 2 - 100))
 
 drawPaddle w h x =   
-  filled black (rect 80 10) |> 
-  moveX (x +  10 -  half w) |> 
-  moveY (-(half h - 30))
+  toForm (image 100 40 "/img/tramp.png") |> 
+  moveX (x - 5 -  half w) |> 
+  moveY (-(half h - 15))
 
 half x = toFloat x / 2
 
@@ -145,7 +148,7 @@ drawScore w h player =
 
 fullScore player = txt (Text.height 50) (show player.score)
 
-txt f = text . f . monospace . Text.color blue . toText
+txt f = text . f . monospace . Text.color white . toText
 
 drawMessage w h state =    
   toForm (txt (Text.height 50) (stateMessage state)) |>

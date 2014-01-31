@@ -1,7 +1,7 @@
 Language Heads
 =============
 
-Seven More Languages in Seven Weeks is a book dedicated to learning languages to become a better programmer. The goal is to present a nontrivial problem for each language in the book. Language Heads is a game written in the Elm language, a reactive language that is based on Java, which compiles to JavaScript, and has a heavy Haskell influence. 
+Seven More Languages in Seven Weeks is a book dedicated to learning languages to become a better programmer. The goal is to present a nontrivial problem for each language in the book. Language Heads is a game written in the Elm language, a reactive language which compiles to JavaScript and has a heavy Haskell influence. 
 
 Build it
 --------------
